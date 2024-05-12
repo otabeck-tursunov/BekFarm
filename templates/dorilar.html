@@ -74,11 +74,15 @@
                     <!-- ============================================================== -->
                     <!-- Search -->
                     <!-- ============================================================== -->
-                    <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark"
-                                                       href="javascript:void(0)"><i class="ti-search"></i></a>
+                    <li class="nav-item search-box">
+                        <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                            <i class="ti-search"></i>
+                        </a>
                         <form class="app-search position-absolute">
-                            <input type="text" name="search" class="form-control" placeholder="Search &amp; enter"> <a
-                                class="srh-btn"><i class="ti-close"></i></a>
+                            <input type="text" name="search" class="form-control" placeholder="Search &amp; enter">
+                            <a class="srh-btn">
+                                <i class="ti-close"></i>
+                            </a>
                         </form>
                     </li>
                 </ul>
@@ -116,6 +120,13 @@
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="{% url 'sotuvlar' %}" aria-expanded="false"><i
                             class="mdi fa-money-bill-alt"></i><span class="hide-menu">Sotuvlar</span></a></li>
+                    <hr>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="{% url 'top-dorilar' %}" aria-expanded="false"><i
+                            class="mdi fa-angle-up"></i><span class="hide-menu">Top dorilar</span></a></li>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="{% url 'tavsiya' %}" aria-expanded="false"><i
+                            class="mdi fa-caret-down"></i><span class="hide-menu">Tavsiya</span></a></li>
 
                 </ul>
 
@@ -150,7 +161,7 @@
                 <div class="col-7">
                     <div class="text-end upgrade-btn">
                         <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                           Dori qo'shish
+                            Dori qo'shish
                         </button>
                     </div>
                 </div>
@@ -179,8 +190,10 @@
                                     <th scope="col">Turi</th>
                                     <th scope="col">Narx</th>
                                     <th scope="col">Miqdor</th>
+                                    <th scope="col"></th>
                                     <th scope="col">Kelgan sana</th>
                                     <th scope="col">Muddat</th>
+                                    <th scope="col"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -192,8 +205,25 @@
                                         <td>{{ dori.turi }}</td>
                                         <td>{{ dori.narx }} so'm</td>
                                         <td>{{ dori.miqdor }} dona</td>
+                                        <td>
+                                            <form method="get" id="new-product-form">
+                                                <input type="hidden" name="miqdor" value="1">
+                                                <input type="hidden" name="dori" value="{{ dori.id }}">
+                                                <button type="submit" class="btn btn-primary" style="color: white">
+                                                    +
+                                                </button>
+                                            </form>
+
+                                        </td>
                                         <td>{{ dori.kelgan_sana }}</td>
                                         <td>{{ dori.muddat }}</td>
+                                        <td>
+                                            <a href="/dorilar/{{ dori.id }}/tasdiqlash/">
+                                                <button type="button" class="btn btn-youtube" style="color: white">
+                                                    O'chirish
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -216,60 +246,65 @@
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
 
-      <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content" style="width: 700px">
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 700px">
 
-                <!-- Modal Header -->
-                <div class="modal-header bg-dark">
-                    <h4 class="modal-title" style="color: white">Yangi dori</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- Modal Header -->
+                    <div class="modal-header bg-dark">
+                        <h4 class="modal-title" style="color: white">Yangi dori</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <form method="post" id="new-product-form">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <label for="new-product-name">Nomi:</label>
+                            <input type="text" name="nom" placeholder="Dori nomi ..." id="new-product-name"
+                                   class="form-control" required>
+                            <br>
+                            <label for="new-product-name">Ishlab chiqaruvchu:</label>
+                            <input type="text" name="ishlab_chiqaruvchi" placeholder="Dori ishlab chiqaruvchi ..."
+                                   id="new-product-brend"
+                                   class="form-control" required>
+                            <br>
+                            <label for="new-product-name">Turi:</label>
+                            <input type="text" name="turi" placeholder="Dori turi ..." id="new-product-price"
+                                   class="form-control" required>
+                            <br>
+                            <label for="new-product-name">Narx:</label>
+                            <input type="number" name="narx" placeholder="Dori narxi ..." id="new-product-price-2"
+                                   class="form-control" required>
+                            <br>
+                            <label for="new-product-name">Miqdor:</label>
+                            <input type="number" name="miqdor" placeholder="Dori miqdori ..."
+                                   id="new-product-amount" class="form-control" required>
+                            <br>
+                            <label for="new-product-name">Kelgan sana:</label>
+                            <input type="date" name="kelgan_sana" placeholder="Kelgan sana ..."
+                                   class="form-control">
+                            <br>
+                            <label for="new-product-name">Yaroqlilik muddati:</label>
+                            <input type="date" name="muddat" placeholder="Yaroqlilik muddati ..."
+                                   class="form-control" required>
+                            <br>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Qo`shish</button>
+                            <button type="button" class="btn btn-danger" style="color: white" data-dismiss="modal">
+                                Yopish
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
-
-                <!-- Modal body -->
-                <form method="post" id="new-product-form">
-                    {% csrf_token %}
-                    <div class="modal-body">
-                        <label for="new-product-name">Nomi:</label>
-                        <input type="text" name="nom" placeholder="Dori nomi ..." id="new-product-name"
-                               class="form-control" required>
-                        <br>
-                        <label for="new-product-name">Ishlab chiqaruvchu:</label>
-                        <input type="text" name="ishlab_chiqaruvchi" placeholder="Dori ishlab chiqaruvchi ..." id="new-product-brend"
-                               class="form-control" required>
-                        <br>
-                        <label for="new-product-name">Turi:</label>
-                        <input type="text" name="turi" placeholder="Dori turi ..." id="new-product-price"
-                               class="form-control" required>
-                        <br>
-                        <label for="new-product-name">Narx:</label>
-                        <input type="number" name="narx" placeholder="Dori narxi ..." id="new-product-price-2"
-                               class="form-control" required>
-                        <br>
-                        <label for="new-product-name">Miqdor:</label>
-                        <input type="number" name="miqdor" placeholder="Dori miqdori ..."
-                               id="new-product-amount" class="form-control" required>
-                        <br>
-                        <label for="new-product-name">Kelgan sana:</label>
-                        <input type="date" name="kelgan_sana" placeholder="Kelgan sana ..."
-                               class="form-control">
-                        <br>
-                        <label for="new-product-name">Yaroqlilik muddati:</label>
-                        <input type="date" name="muddat" placeholder="Yaroqlilik muddati ..."
-                               class="form-control" required>
-                        <br>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Qo`shish</button>
-                        <button type="button" class="btn btn-danger" style="color: white" data-dismiss="modal">Yopish</button>
-                    </div>
-                </form>
-
             </div>
         </div>
-    </div>
+
+
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- footer -->
