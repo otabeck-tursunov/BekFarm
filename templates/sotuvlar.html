@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+{% load static %}
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bek Farm</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/"/>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="/static/dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin5">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <a class="navbar-brand" href="index.html">
+                    <!-- Logo icon -->
+                    <b class="logo-icon">
+                        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                        <!-- Dark Logo icon -->
+                        <img src="/static/assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
+                        <!-- Light Logo icon -->
+                        <img src="/static/bek_farm_logo.png" height="50px" width="150px" alt="homepage"
+                             class="light-logo"/>
+                    </b>
+                    <!--End Logo icon -->
+                    <!-- Logo text -->
+                    {#                        <span class="logo-text">#}
+                    {#                            <!-- dark Logo text -->#}
+                    {#                            <img src="/static/assets/images/logo-text.png" alt="homepage" class="dark-logo" />#}
+                    {#                            <!-- Light Logo text -->#}
+                    {#                            <img src="/static/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />#}
+                    {#                        </span>#}
+                </a>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <!-- This is for the sidebar toggle which is visible on mobile only -->
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                        class="ti-menu ti-close"></i></a>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav float-start me-auto">
+                    <!-- ============================================================== -->
+                    <!-- Search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark"
+                                                       href="javascript:void(0)"><i class="ti-search"></i></a>
+                        <form class="app-search position-absolute">
+                            <input type="text" name="search" class="form-control" placeholder="Search &amp; enter"> <a
+                                class="srh-btn"><i class="ti-close"></i></a>
+                        </form>
+                    </li>
+                </ul>
+                <!-- ============================================================== -->
+                <!-- Right side toggle and nav items -->
+                <!-- ============================================================== -->
+            </div>
+        </nav>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <aside class="left-sidebar" data-sidebarbg="skin6">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <!-- User Profile-->
+                    <li>
+
+                    </li>
+                    <li class="p-15 m-t-10"><a href="javascript:void(0)"
+                                               class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
+                            class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Bek Farm</span> </a>
+                    </li>
+                    <!-- User Profile-->
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="{% url 'dorilar' %}" aria-expanded="false"><i
+                            class="mdi mdi-medical-bag"></i><span
+                            class="hide-menu">Dorilar</span></a></li>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="{% url 'sotuvlar' %}" aria-expanded="false"><i
+                            class="mdi fa-money-bill-alt"></i><span class="hide-menu">Sotuvlar</span></a></li>
+
+                </ul>
+
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <h4 class="page-title">Sotuvlar</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Bosh sahifa</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Sotuvlar</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="text-end upgrade-btn">
+                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Sotuv qo'shish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        {#                            <div class="card-body">#}
+                        {#                                <h4 class="card-title">Table Header</h4>#}
+                        {#                                <h6 class="card-subtitle">Similar to tables, use the modifier classes .thead-light to#}
+                        {#                                    make <code>&lt;thead&gt;</code>s appear light.</h6>#}
+                        {#                            </div>#}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">T/r</th>
+                                    <th scope="col">Dori</th>
+                                    <th scope="col">Miqdori</th>
+                                    <th scope="col">Summa</th>
+                                    <th scope="col">Sana</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for sotuv in sotuvlar %}
+                                    <tr>
+                                        <th scope="row">{{ forloop.counter }}.</th>
+                                        <td>{{ sotuv.dori.nom }} - {{ sotuv.dori.ishlab_chiqaruvchi }}</td>
+                                        <td>{{ sotuv.miqdor }} dona</td>
+                                        <td>{{ sotuv.summa }}</td>
+                                        <td>{{ sotuv.sana }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 700px">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header bg-dark">
+                        <h4 class="modal-title" style="color: white">Yangi sotuv</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <form method="post" id="new-product-form">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <label for="new-product-name">Dori:</label>
+                            <select type="text" name="dori" placeholder="Dori nomi ..." id="new-product-name"
+                                    class="form-control" required>
+                                {% for dori in dorilar %}
+                                    <option value="{{ dori.id }}">{{ dori.nom }}
+                                        - {{ dori.ishlab_chiqaruvchi }}</option>
+                                {% endfor %}
+                            </select>
+                        
+                            <br>
+                            <label for="new-product-name">Miqdor:</label>
+                            <input type="number" name="miqdor" placeholder="Dori miqdori ..."
+                                   id="new-product-amount" class="form-control" required>
+
+                            <br>
+                            <label for="new-product-name">Summa:</label>
+                            <input type="number" name="summa" placeholder="Jami summa ..." id="new-product-price-2"
+                                   class="form-control" required>
+                            <br>
+                            <label for="new-product-name">Sana:</label>
+                            <input type="date" name="sana" placeholder="Sana ..."
+                                   class="form-control">
+                            <br>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Qo`shish</button>
+                            <button type="button" class="btn btn-danger" style="color: white" data-dismiss="modal">
+                                Yopish
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            Barcha huquqlar himoyalangan. <a
+                href="#">Bek Farm</a>.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="/static/assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/static/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/dist/js/app-style-switcher.js"></script>
+<!--Wave Effects -->
+<script src="/static/dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="/static/dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/static/dist/js/custom.js"></script>
+
+{##}
+
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="/static/dist/js/adminlte.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="/static/plugins/chart.js/Chart.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/static/dist/js/pages/dashboard3.js"></script>
+</body>
+
+</html>
