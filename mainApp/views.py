@@ -102,7 +102,7 @@ class TavsiyaView(View):
 class SotuvlarView(View):
     def get(self, request):
         search = request.GET.get('search')
-        sotuvlar = Sotuv.objects.all()
+        sotuvlar = Sotuv.objects.order_by('-id')
         if search is not None:
             sotuvlar = sotuvlar.filter(
                 Q(dori__nom__icontains=search) |
@@ -121,12 +121,14 @@ class SotuvlarView(View):
         miqdor = int(request.POST.get('miqdor'))
         if miqdor > dori.miqdor:
             return HttpResponse("""            <p>Kiritilgan miqdorda dori mavjud emas</p>            """)
-        Sotuv.objects.create(
+        sotuv = Sotuv.objects.create(
             dori=dori,
             miqdor=miqdor,
-            summa=request.POST.get('summa'),
+            # summa=request.POST.get('summa'),
             sana=request.POST.get('sana')
         )
+        sotuv.summa = sotuv.miqdor * sotuv.dori.narx
+        sotuv.save()
         dori.miqdor -= miqdor
         dori.save()
         return redirect('sotuvlar')

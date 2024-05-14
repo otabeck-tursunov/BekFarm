@@ -18,6 +18,7 @@ class Dori(models.Model):
 class Sotuv(models.Model):
     dori = models.ForeignKey(Dori, on_delete=models.CASCADE)
     miqdor = models.IntegerField(validators=[MinValueValidator(0)])
-    summa = models.FloatField(validators=[MinValueValidator(0)])
+    summa = models.FloatField(validators=[MinValueValidator(0)], blank=True, null=True)
     sana = models.DateField(auto_now_add=True)
+
 
